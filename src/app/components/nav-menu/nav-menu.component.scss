@@ -1,0 +1,72 @@
+mat-toolbar {
+  position: relative;
+  z-index: 1;
+  background-color: #3e2be9d3;
+  height: 50px;
+
+  .logo-img {
+    height: 100%;
+    background-color: #6d7fe6b4;
+    img {
+      width: 65px;
+      height: 60px;
+      position: relative;
+      top: -6px;
+    }
+  }
+  mat-icon {
+    color: white;
+  }
+  .user-img img {
+    max-width: 40px;
+    max-height: 30px;
+    position: relative;
+    margin-right: 10px;
+    top: 3px;
+  }
+
+  .mat-menu-panel {
+    background: #3e2be9d3;
+  }
+}
+span a span {
+  font-weight: bold;
+  color: white;
+}
+
+a {
+  padding: 10px;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.username {
+  font-size: 16px;
+  color: rgba(255, 255, 255);
+  display: contents;
+
+  p {
+    margin-right: 20px;
+  }
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  display: flex;
+  box-sizing: border-box;
+  padding: 0 0;
+  padding-right: 16px;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.mat-menu-item {
+  text-align: center;
+}

@@ -1,0 +1,127 @@
+.register-box {
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 10%;
+
+  .register-logo img {
+    max-height: 230px;
+    min-width: 130px;
+    min-height: 100px;
+    position: relative;
+    left: 30%;
+  }
+
+  form {
+    min-width: 240px;
+    -webkit-box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.2);
+    padding: 40px 60px;
+  }
+
+  .field {
+    text-align: center;
+    padding-top: 10px;
+
+    button {
+      width: 70%;
+      font-size: large;
+      margin-top: 10px;
+      background-color: rgb(160, 161, 48);
+    }
+  }
+  .pass-forgot {
+    margin-left: 20px;
+  }
+  .forgot {
+    font-style: italic;
+    color: rgb(165, 66, 66);
+  }
+  mat-form-field {
+    display: block;
+  }
+  .notification.is-danger {
+    text-align: center;
+  }
+}
+
+@media (max-width: 1280px) {
+  .register-box {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 10%;
+
+    .register-logo img {
+      max-height: 180px;
+      left: 33%;
+    }
+
+    form {
+      padding: 40px 50px;
+      margin-left: 15%;
+      margin-right: 15%;
+    }
+
+    .field {
+      button {
+        padding-top: 10px;
+      }
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .register-box {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+
+    .register-logo img {
+      max-height: 150px;
+      min-width: 100px;
+      left: 35%;
+    }
+  }
+  .field {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .register-box {
+    // margin-left: 20%;
+    // margin-right: 20%;
+    // margin-bottom: 10%;
+
+    form {
+      padding: 30px 20px;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    .register-logo img {
+      max-height: 130px;
+      min-width: 130px;
+      left: 30%;
+    }
+  }
+
+  .field {
+    button {
+      width: 60%;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .register-box {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+
+    .register-logo img {
+      max-height: 100px;
+      min-width: 100px;
+      left: 35%;
+    }
+  }
+}

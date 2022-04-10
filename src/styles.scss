@@ -1,0 +1,212 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$pchela-bg-primary: mat.define-palette(mat.$indigo-palette);
+$pchela-bg-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$pchela-bg-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$pchela-bg-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $pchela-bg-primary,
+      accent: $pchela-bg-accent,
+      warn: $pchela-bg-warn
+    )
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($pchela-bg-theme);
+
+/* You can add global styles to this file, and also import other style files */
+.mat-form-field-infix {
+  display: block;
+  position: relative;
+  flex: auto;
+  min-width: 0;
+  width: 100px !important;
+}
+
+title span {
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: rgb(192, 190, 190);
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  border-radius: 5px;
+  background-color: white;
+}
+
+.icon.is-medium {
+  padding-bottom: 10px;
+  height: 2rem;
+  width: 2rem;
+}
+
+mat-grid-list {
+  background-color: rgb(192, 190, 190);
+}
+
+.grid {
+  display: grid;
+
+  &--cols-6 {
+    grid-column: 6;
+    gap: 20px;
+  }
+
+  &--cols-cards {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
+  }
+
+  &--cols-auto {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  &--cols-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &--cols-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  &--cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &--column-gap-10 {
+    grid-column-gap: 10px;
+  }
+
+  &--column-gap-20 {
+    grid-column-gap: 20px;
+  }
+
+  &--column-gap-60 {
+    grid-column-gap: 60px;
+  }
+
+  &--row-gap-10 {
+    grid-row-gap: 10px;
+  }
+
+  &--row-gap-20 {
+    grid-row-gap: 20px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .grid--cols-5 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .grid--cols-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid--cols-5 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* for dialog op up */
+
+.btn-dialog-close {
+  width: 45px;
+  min-width: 0px !important;
+  height: 40px;
+  padding: 0px !important;
+}
+
+/* mat-confirm-dialog (customised dialog) */
+.confirm-dialog-container .mat-dialog-container {
+  border-radius: 0.25em 0.25em 0.4em 0.4em;
+  padding: 0px;
+}
+.confirm-dialog-container .content-container {
+  margin: 5px 5px 15px 5px;
+  color: #8f9cb5;
+  display: flex;
+}
+.confirm-dialog-container #close-icon {
+  margin-left: auto;
+  order: 2;
+  font-weight: bolder;
+}
+.confirm-dialog-container #close-icon:hover {
+  cursor: pointer;
+}
+
+.confirm-dialog-container #no-button {
+  height: 50px;
+  width: 50%;
+  background-color: #b6bece;
+  color: white;
+  border-radius: 0px;
+}
+
+.confirm-dialog-container #yes-button {
+  height: 50px;
+  width: 50%;
+  background-color: #fc7169;
+  color: white;
+  border-radius: 0px;
+}
+
+.confirm-dialog-container span.content-span {
+  padding: 35px 16px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.mat-menu-panel {
+  background: #3e2be9d3;
+  button {
+    color: white;
+  }
+}
+
+#breadcrumbs {
+  margin-top: 10px;
+  position: absolute;
+  padding: 10px;
+  left: 40px;
+}

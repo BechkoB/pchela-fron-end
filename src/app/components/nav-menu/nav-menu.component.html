@@ -1,1 +1,46 @@
-<p>nav-menu works!</p>
+<div>
+  <mat-toolbar>
+    <div class="logo-img">
+      <img src="../assets/img/login-register-logo.png" alt="" />
+    </div>
+    <span>
+      <a routerLink="/beegardens"><span>ОГ</span> Пчела </a>
+    </span>
+    <span class="spacer"></span>
+    <div *ngIf="(loginStatus$ | async) === false as loginStatus">
+      <a class="login" routerLink="/login" *ngIf="loginStatus">Вход</a>
+    </div>
+    <div *ngIf="(loginStatus$ | async) === false as loginStatus">
+      <a class="login" routerLink="/register" *ngIf="loginStatus"
+        >Регистрация</a
+      >
+    </div>
+
+    <div class="username" *ngIf="userName$ | async as UserName">
+      <div class="user-img">
+        <img src="../assets/img/user-icon.png" alt="" />
+      </div>
+      <p >{{ UserName }}</p>
+    </div>
+
+    <div *ngIf="(loginStatus$ | async) === true as loginStatus">
+      <button
+      *ngIf="loginStatus"
+        mat-icon-button
+        class="example-icon"
+        aria-label="Example icon-button with menu icon"
+        [matMenuTriggerFor]="menu"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+      <mat-menu #menu="matMenu" class="slider-menu">
+        <div *ngIf="(isAdmin$ | async) === true as isAdmin">
+          <a class="login" routerLink="/register/list" *ngIf="isAdmin"
+            >Регистрирани</a
+          >
+        </div>
+        <button mat-menu-item (click)="onLogout()">Изход</button>
+      </mat-menu>
+  </mat-toolbar>
+</div>

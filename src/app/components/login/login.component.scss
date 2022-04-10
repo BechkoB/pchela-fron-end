@@ -1,0 +1,212 @@
+.login-box {
+  margin-left: 30%;
+  margin-right: 30%;
+  margin-bottom: 10%;
+
+  .login-logo img {
+    max-height: 230px;
+    min-width: 130px;
+    min-height: 100px;
+    position: relative;
+    left: 30%;
+  }
+
+  form {
+    min-width: 240px;
+    -webkit-box-shadow: 0px 4px 25px 11px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 4px 25px 11px rgba(0,0,0,0.4);
+    box-shadow: 0px 4px 25px 11px rgba(0,0,0,0.2);
+    padding: 40px 60px;
+  }
+
+  .options {
+    justify-content: space-between;
+
+    .remember-check {
+      padding-top: 10px;
+      padding-bottom: 30px;
+      padding-left: 10%;
+      font-style: italic;
+      width: 200px;
+      display: inline-block;
+    }
+
+    .pass-forgot {
+      padding-top: 10px;
+      padding-bottom: 30px;
+      padding-left: 25%;
+      font-style: italic;
+      display: inline-block;
+
+      .forgot {
+        font-style: italic;
+        color: rgb(165, 66, 66);
+      }
+    }
+  }
+
+  .field {
+    text-align: center;
+
+    button {
+      width: 60%;
+      font-size: large;
+      background-color: rgb(160, 161, 48);
+    }
+  }
+
+  mat-form-field {
+    display: block;
+  }
+
+  .notification.is-danger {
+    text-align: center;
+  }
+}
+
+@media (max-width: 1280px) {
+  .login-box {
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 10%;
+
+    .login-logo img {
+      max-height: 180px;
+      min-width: 130px;
+      min-height: 100px;
+      position: relative;
+      left: 33%;
+    }
+
+    form {
+      padding: 40px 50px;
+      margin-left: 15%;
+      margin-right: 15%;
+    }
+
+    .options {
+      .pass-forgot {
+        padding-left: 15%;
+      }
+    }
+
+    .field {
+      text-align: center;
+
+      button {
+        width: 70%;
+        font-size: large;
+        padding-top: 10px;
+      }
+    }
+    mat-form-field {
+      display: block;
+    }
+  }
+}
+
+@media (max-width: 860px) {
+  .login-box {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+
+    .login-logo img {
+      max-height: 150px;
+      min-width: 100px;
+      min-height: 100px;
+      position: relative;
+      left: 35%;
+    }
+    .options {
+      .pass-forgot {
+        display: inline-flex;
+        position: relative;
+        left: 10%;
+        padding-left: 0;
+        margin-bottom: 20px;
+      }
+    }
+    .field {
+      text-align: center;
+      padding: 10px;
+
+      button {
+        width: 70%;
+        font-size: large;
+      }
+    }
+  }
+}
+
+@media (max-width: 650px) {
+  .login-box {
+    // margin-left: 10%;
+    // margin-right: 10%;
+    // margin-bottom: 5%;
+
+    .login-logo img {
+      max-height: 130px;
+      min-width: 100px;
+      min-height: 100px;
+      position: relative;
+      left: 30%;
+    }
+
+    form {
+      padding: 30px 20px;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+
+    .options {
+
+      .pass-forgot {
+        margin-bottom: 10px;
+        padding-left: 0;
+      }
+    }
+    .field {
+      button {
+        width: 80%;
+        padding-top: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .login-box {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+
+    .login-logo img {
+      max-height: 100px;
+      min-width: 100px;
+      min-height: 100px;
+      position: relative;
+      left: 35%;
+    }
+
+    form {
+      padding: 30px 20px;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+
+    .options {
+
+      .pass-forgot {
+        display: inline-flex;
+        position: relative;
+        padding-left: 0;
+      }
+    }
+    .field {
+      button {
+        width: 80%;
+      }
+    }
+  }
+}

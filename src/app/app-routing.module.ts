@@ -1,10 +1,58 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { AuthGuard } from './guards/auth.guard';
+import { LoggedInGuard } from './guards/logged-in.guard';
+
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { BeeGardensComponent } from './components/beegardens/beegardens.component';
+import { BeehivesComponent } from './components/beehives/beehives.component';
+import { AddBeegardenComponent } from './components/add-beegarden/add-beegarden.component';
+import { AddBeehiveComponent } from './components/add-beehive/add-beehive.component';
+import { BeehivesDataComponent } from './components/beehives-data/beehives-data.component';
+
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'beegardens' },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    canActivate: [LoggedInGuard]
+  },
+  {
+    path: 'beegardens',
+    component: BeeGardensComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'beegardens/:id',
+    component: BeehivesComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'addbeegardens',
+    component: AddBeegardenComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'beegardens/:id/addbeehive',
+    component: AddBeehiveComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'beegardens/:id/beehives/:id',
+    component: BeehivesDataComponent,
+    canActivate: [AuthGuard]
+  }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

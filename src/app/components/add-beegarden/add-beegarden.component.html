@@ -1,1 +1,40 @@
-<p>add-beegarden works!</p>
+<section id="breadcrumbs">
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li><a routerLink="/beegardens">
+        <span class="icon is-small">
+          <i class="fas fa-home" aria-hidden="true"></i>
+        </span>
+        <span>Пчелини</span>
+      </a></li>
+    </ul>
+  </nav>
+</section>
+
+<div class="form-container">
+  <form
+      class="add-form"
+      *ngIf="formInput"
+      [formGroup]="formInput"
+      (ngSubmit)="onSubmit(formInput)"
+    >
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Име на Пчелин</mat-label>
+        <input formControlName="name" matInput required />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Географска ширина</mat-label>
+        <input formControlName="lat" matInput required placeholder="ex 41.3213"/>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Географска дължина</mat-label>
+        <input formControlName="lng" matInput required placeholder="ex 34.4213"/>
+      </mat-form-field>
+    <div class="notification is-danger" *ngIf="hasError">{{errorMsg}}</div>
+
+      <button [disabled]="formInput.invalid" mat-raised-button type="submit">
+        Добави
+      </button>
+      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">Зареждане...</span>
+    </form>
+</div>

@@ -6,13 +6,12 @@ import { MaterialModule } from './modules/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RandomColorPipe } from './pipes/random-color.pipe';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
-import { BeegardensComponent } from './components/beegardens/beegardens.component';
+import { BeeGardensComponent } from './components/beegardens/beegardens.component';
 import { BeehivesComponent } from './components/beehives/beehives.component';
 import { BeehivesDataComponent } from './components/beehives-data/beehives-data.component';
 import { AddBeegardenComponent } from './components/add-beegarden/add-beegarden.component';
@@ -25,7 +24,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     LoginComponent,
     RegisterComponent,
     NavMenuComponent,
-    BeegardensComponent,
+    BeeGardensComponent,
     BeehivesComponent,
     BeehivesDataComponent,
     AddBeegardenComponent,

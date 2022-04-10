@@ -1,0 +1,62 @@
+.bee-gardens-container {
+  padding: 40px;
+}
+
+.card-wrapper {
+  cursor: pointer;
+}
+
+mat-card-header {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.example-header-image {
+  background-image: url('../../../assets/img/login-register-logo.png');
+  background-size: cover;
+}
+
+#location {
+  margin-left: 40px;
+  margin-top: 8px;
+}
+
+mat-card-subtitle {
+  margin-bottom: 0;
+}
+
+.card-image {
+  margin: auto;
+}
+
+.box {
+  margin-top: -22px;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+.addBtn {
+  font-size: 16px;
+  background-color: white;
+  padding: 5px 20px;
+}
+
+mat-card {
+  min-height: 260px;
+  height: 321px;
+}
+
+.bee-gardens-card {
+  -webkit-box-shadow: 10px 10px 17px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 17px -4px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 17px -4px rgba(0,0,0,0.2);
+  border-radius: 7px 7px 7px 7px;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border-radius: 7px 7px 7px 7px;
+  border: 0px solid #000000;
+}

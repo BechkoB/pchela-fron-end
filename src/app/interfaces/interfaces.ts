@@ -9,7 +9,7 @@ export interface IBeeGarden {
   lng?: number;
 }
 
-export interface User {
+export interface IUser {
   token: string;
   userid: string;
   email: string;
@@ -18,17 +18,17 @@ export interface User {
   tokenExpiresIn: number;
 }
 
-export interface BeeHiveData {
+export interface IBeeHiveData {
   _id: string;
   beeHive: string;
-  data: BeeHiveDataData;
+  data: IBeeHiveDataData;
   time: Date;
   createdAt: Date;
   updatedAt: Date;
 }
 
-export interface BeeHiveDataData {
-  cellData: CellData[];
+export interface IBeeHiveDataData {
+  cellData: ICellData[];
   eggsWeight: number;
   queensCount: number;
   queensWeight: number;
@@ -44,8 +44,16 @@ export interface BeeHiveDataData {
   outsideHumid: number;
 }
 
-export interface CellData {
+export interface ICellData {
   temp: number;
   humidity: number;
   viewValue: string;
+}
+
+export interface IUserData {
+  email: string;
+  success: boolean;
+  token: string;
+  tokenExpiresIn: number;
+  userid: string;
 }
