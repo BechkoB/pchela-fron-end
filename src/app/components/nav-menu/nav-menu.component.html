@@ -4,7 +4,7 @@
       <img src="../assets/img/login-register-logo.png" alt="" />
     </div>
     <span>
-      <a routerLink="/beegardens"><span>ОГ</span> Пчела </a>
+      <a routerLink="/"><span>ОГ</span> Пчела </a>
     </span>
     <span class="spacer"></span>
     <div *ngIf="(loginStatus$ | async) === false as loginStatus">
@@ -16,11 +16,19 @@
       >
     </div>
 
+    <div *ngIf="(loginStatus$ | async) === false as loginStatus">
+      <a class="login" routerLink="/beegardens/list" *ngIf="loginStatus"
+        >Пчелини</a
+      >
+    </div>
+
     <div class="username" *ngIf="userName$ | async as UserName">
       <div class="user-img">
-        <img src="../assets/img/user-icon.png" alt="" />
+          <a routerLink="/my-profile">
+          <img src="../assets/img/user-icon.png" alt="" />
+        </a>
       </div>
-      <p >{{ UserName }}</p>
+        <p >{{ UserName }}</p>
     </div>
 
     <div *ngIf="(loginStatus$ | async) === true as loginStatus">
@@ -34,13 +42,8 @@
         <mat-icon>menu</mat-icon>
       </button>
     </div>
-      <mat-menu #menu="matMenu" class="slider-menu">
-        <div *ngIf="(isAdmin$ | async) === true as isAdmin">
-          <a class="login" routerLink="/register/list" *ngIf="isAdmin"
-            >Регистрирани</a
-          >
-        </div>
+    <mat-menu #menu="matMenu" class="slider-menu">
         <button mat-menu-item (click)="onLogout()">Изход</button>
-      </mat-menu>
+    </mat-menu>
   </mat-toolbar>
 </div>

@@ -1,5 +1,6 @@
 .bee-gardens-container {
-  padding: 40px;
+  margin-top: 80px;
+  margin-left: 40px;
 }
 
 .card-wrapper {
@@ -34,13 +35,12 @@ mat-card-subtitle {
 }
 
 .btn-wrapper {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  padding-right: 20px;
-  padding-top: 10px;
+  position: absolute;
+  right: 12rem;
+  top: 5rem;
 }
 .addBtn {
+  position: absolute;
   font-size: 16px;
   background-color: white;
   padding: 5px 20px;

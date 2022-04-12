@@ -17,6 +17,8 @@ import { BeehivesDataComponent } from './components/beehives-data/beehives-data.
 import { AddBeegardenComponent } from './components/add-beegarden/add-beegarden.component';
 import { AddBeehiveComponent } from './components/add-beehive/add-beehive.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     AddBeegardenComponent,
     AddBeehiveComponent,
     ConfirmDialogComponent,
-    RandomColorPipe
+    RandomColorPipe,
+    NotFoundComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

@@ -32,13 +32,8 @@
       </mat-form-field>
       <div class="notification is-danger" *ngIf="hasError">{{errorMsg}}</div>
       <div class="options">
-        <div class="remember-check">
-          <mat-checkbox class="example-margin" formControlName="checked"
-            >Запомни ме</mat-checkbox
-          >
-        </div>
-        <div class="pass-forgot">
-          <a class="forgot" routerLink="">Забравeна парола?</a>
+        <div class="register">
+          Не сте регистрирани ? Влезте <a routerLink="/register">ТУК</a>
         </div>
       </div>
       <div class="field">

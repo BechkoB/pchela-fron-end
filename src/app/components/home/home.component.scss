@@ -1,0 +1,22 @@
+.header {
+  text-align: center;
+  margin-top: 10%;
+  h1 {
+    color: black;
+    font-size: 32px;
+  }
+}
+
+section {
+  width: calc(100% - 20rem);
+  max-width: 40rem;
+  background-color:rgba(196, 193, 193, 0.39);
+  border-radius: 20px;
+  padding: 20px;
+  text-align: center;
+  p {
+    font-style: italic;
+    margin:  auto;
+    color: black;
+  }
+}

@@ -14,6 +14,7 @@ export class AddBeegardenComponent implements OnInit {
   formInput?: FormGroup;
   loading = false;
   hasError = false;
+  userData: any;
   errorMsg = 'Нещо се обърка. Моля опитайте пак.';
 
   constructor(
@@ -23,6 +24,9 @@ export class AddBeegardenComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.userData = JSON.parse(
+      localStorage.getItem('userData') as string
+    );
     this.formInput = new FormGroup({
       name: new FormControl(null, Validators.required),
       lat: new FormControl(null, Validators.required),
@@ -38,9 +42,9 @@ export class AddBeegardenComponent implements OnInit {
       this.loading = false;
       return this._handleError('Моля, въведете само цифри за координатите');
     }
-
+    console.log(this.userData);
     this._beeGardenService
-      .addGarden({ name, lat, lng })
+      .addGarden({ ownerId: this.userData.userId, name, lat, lng })
       .pipe(first())
       .subscribe({
         next: (response: any) => {

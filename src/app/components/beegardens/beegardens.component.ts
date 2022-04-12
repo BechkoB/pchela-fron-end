@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { take } from 'rxjs';
+import { take, Observable } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import { BeeGardenService } from '../../services/beegarden.service';
 import { SharedService } from 'src/app/services/shared.service';
@@ -11,6 +11,7 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./beeGardens.component.scss']
 })
 export class BeeGardensComponent implements OnInit {
+  loginStatus$!: Observable<boolean>;
   beeGardens: any;
   hasUser?: boolean;
   email = '';
@@ -23,6 +24,8 @@ export class BeeGardensComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.loginStatus$ = this.userService.isLoggedIn;
+
     const userData = JSON.parse(localStorage.getItem('userData') as string);
 
     if (!userData) {

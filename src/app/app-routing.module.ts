@@ -11,9 +11,11 @@ import { BeehivesComponent } from './components/beehives/beehives.component';
 import { AddBeegardenComponent } from './components/add-beegarden/add-beegarden.component';
 import { AddBeehiveComponent } from './components/add-beehive/add-beehive.component';
 import { BeehivesDataComponent } from './components/beehives-data/beehives-data.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'beegardens' },
+  { path: '', component: HomeComponent },
   {
     path: 'login',
     component: LoginComponent,
@@ -25,9 +27,8 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   {
-    path: 'beegardens',
-    component: BeeGardensComponent,
-    canActivate: [AuthGuard]
+    path: 'beegardens/list',
+    component: BeeGardensComponent
   },
   {
     path: 'beegardens/:id',
@@ -48,7 +49,8 @@ const routes: Routes = [
     path: 'beegardens/:id/beehives/:id',
     component: BeehivesDataComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 
 @NgModule({

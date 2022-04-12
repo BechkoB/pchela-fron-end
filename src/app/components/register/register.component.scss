@@ -15,7 +15,7 @@
     min-width: 240px;
     -webkit-box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.8);
     padding: 40px 60px;
   }
 
@@ -30,12 +30,16 @@
       background-color: rgb(160, 161, 48);
     }
   }
-  .pass-forgot {
+  .isregistered {
     margin-left: 20px;
-  }
-  .forgot {
     font-style: italic;
-    color: rgb(165, 66, 66);
+    color: white;
+    font-size: 18px;
+  }
+  .login {
+    font-style: italic;
+    font-size: 20px;
+    color: rgb(136, 255, 0);
   }
   mat-form-field {
     display: block;
