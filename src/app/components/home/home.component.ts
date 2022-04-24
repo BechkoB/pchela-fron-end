@@ -12,10 +12,7 @@ import { BeeGardenService } from 'src/app/services/beegarden.service';
   styleUrls: ['./home.component.scss'],
   animations: [
     trigger('fromLeftAnim', [
-      // When we enter the screen.
       transition(':enter', [
-        // For every '.col' trigger an animation but make sure it is triggered 500ms
-        // AFTER the previous '.col' element
         query('.anim', [
           style({ opacity: 0, transform: 'translateX(-40px)' }),
           stagger('200ms', [
@@ -26,10 +23,7 @@ import { BeeGardenService } from 'src/app/services/beegarden.service';
       ]),
     ]),
     trigger('fromRightAnim', [
-      // When we enter the screen.
       transition(':enter', [
-        // For every '.col' trigger an animation but make sure it is triggered 500ms
-        // AFTER the previous '.col' element
         query('.right', [
           style({ opacity: 0, transform: 'translateX(40px)' }),
           stagger('500ms', [
@@ -40,10 +34,7 @@ import { BeeGardenService } from 'src/app/services/beegarden.service';
       ]),
     ]),
     trigger('fromBottom', [
-      // When we enter the screen.
       transition(':enter', [
-        // For every '.col' trigger an animation but make sure it is triggered 500ms
-        // AFTER the previous '.col' element
         query('.up', [
           style({ opacity: 0, transform: 'translateY(40px)' }),
           stagger('500ms', [
@@ -64,7 +55,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private userService: UserService,
     private beeGardenService: BeeGardenService,
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginStatus$ = this.userService.isLoggedIn;
@@ -81,9 +72,9 @@ export class HomeComponent implements OnInit {
 
   getBeeGardens() {
     this.beeGardenService
-    .getRecentBeeGardens()
-    .pipe(take(1))
-    .subscribe((res) => (this.beeGardens = res, console.log(res)));
+      .getRecentBeeGardens()
+      .pipe(take(1))
+      .subscribe((res) => (this.beeGardens = res));
   }
 }
 

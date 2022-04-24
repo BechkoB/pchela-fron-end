@@ -44,7 +44,6 @@ export class AddBeehiveComponent implements OnInit {
 
   onSubmit(form: FormGroup) {
     const { name, line } = form.value;
-    console.log(name, line);
     this.loading = true;
 
     if (isNaN(line)) {

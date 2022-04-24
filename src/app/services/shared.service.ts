@@ -6,15 +6,17 @@ import { IBeeHiveData } from '../interfaces/interfaces';
   providedIn: 'root'
 })
 export class SharedService {
-  private _email = new BehaviorSubject<string>('');
-
+  private isOwner$ = new BehaviorSubject<boolean>(false);
 
   allBeeHivaData: Array<IBeeHiveData> = [];
-  currentEmail = this._email.asObservable();
-  constructor() {}
+  constructor() { }
 
-  updateEmail(newEmail: string) {
-    this._email.next(newEmail);
+  updateOwnerStatus(ownerStatus: boolean) {
+    this.isOwner$.next(ownerStatus);
+  }
+
+  get ownerStatusGetter() {
+    return this.isOwner$.asObservable();
   }
 
   setData(newData: Array<IBeeHiveData>) {

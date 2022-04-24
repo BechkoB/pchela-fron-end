@@ -11,7 +11,6 @@ export class UserService {
   constructor(private readonly httpService: HttpService) { }
 
   private _loginStatus = new BehaviorSubject<boolean>(false);
-  private _isAdmin = new BehaviorSubject<boolean>(false);
   private _userName = new BehaviorSubject<string>(
     localStorage.getItem('username') as string
   );
@@ -59,7 +58,6 @@ export class UserService {
 
   logoutUser(): void {
     this._loginStatus.next(false);
-    this._isAdmin.next(false);
     localStorage.clear();
     this._userName.next('');
   }
@@ -77,13 +75,8 @@ export class UserService {
     return this._loginStatus.asObservable();
   }
 
-  get isAdmin() {
-    return this._isAdmin.asObservable();
-  }
-
   get currentUserName() {
     return this._userName.asObservable();
   }
-
 
 }

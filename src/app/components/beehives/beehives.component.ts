@@ -4,7 +4,9 @@ import { take, BehaviorSubject } from 'rxjs';
 import { BeeHivesService } from '../../services/hives.service';
 import { DialogService } from 'src/app/services/dialog.service';
 import { BeeGardenService } from 'src/app/services/beegarden.service';
-import { IBeeGarden } from '../../interfaces/interfaces'
+import { IBeeGarden } from '../../interfaces/interfaces';
+import { SharedService } from 'src/app/services/shared.service';
+
 
 @Component({
   selector: 'app-beehives',
@@ -16,37 +18,34 @@ export class BeehivesComponent implements OnInit {
   beeGarden!: IBeeGarden;
   beeGardenId: string = '';
   beeHives: any;
-  private _beeGardenId = new BehaviorSubject<string>('');
-  showAddBtn: boolean = false;
+  isOwner = false;
 
   constructor(
     private _route: ActivatedRoute,
     private _router: Router,
     private _beeGardenService: BeeGardenService,
     private _beeHiveService: BeeHivesService,
-    private _dialogService: DialogService
+    private _dialogService: DialogService,
+    private _sharedService: SharedService
   ) { }
 
   ngOnInit(): void {
     this.beeGardenId = this._route.snapshot.params['id'];
-    this._beeGardenId.next(this.beeGardenId);
-    Promise.all([
-      this._getBeeGardens(),
-      this._getBeeHives()
-    ]);
-    this.checkOwner();
+    this._getBeeGardens();
+    this._getBeeHives();
+    this._sharedService.ownerStatusGetter.pipe(take(1)).subscribe(value => {
+      this.isOwner = value;
+    })
   }
 
   private _getBeeGardens() {
-    const user = JSON.parse(localStorage.getItem('userData') as string);
     this._beeGardenService
       .getBeeGardenById(this.beeGardenId as string)
       .pipe(take(1))
-      .subscribe((res) => {
-        this.beeGarden = res;
-        if (res.ownerId === user.userId) {
-          this.showAddBtn = true;
-        }
+      .subscribe((beeGarden) => {
+        this.beeGarden = beeGarden;
+        this._sharedService.updateOwnerStatus(this.checkForOwner(beeGarden));
+        // this.isOwner.subscribe(value => console.log(value));
       });
   }
 
@@ -57,9 +56,20 @@ export class BeehivesComponent implements OnInit {
       .subscribe((res) => (this.beeHives = res));
   }
 
-  checkOwner() {
-    console.log(this.beeGarden);
+  checkForOwner(beeGarden: IBeeGarden): boolean {
+    const user = JSON.parse(localStorage.getItem('userData') as string);
+    if (user) {
+      if (beeGarden.ownerId === user.userId) {
+        return true;
+      }
+    }
+    return false;
   }
+
+  // get isOwnerGetter() {
+  //   return this.isOwner.asObservable();
+  // }
+
   onClick(id: string) {
     return this._router.navigate([
       `/beegardens/${this.beeGarden._id}/beehives/${id}`
@@ -83,7 +93,6 @@ export class BeehivesComponent implements OnInit {
         if (!response) {
           return;
         }
-
         this._deleteBeeHive(id);
       });
   }
@@ -94,22 +103,4 @@ export class BeehivesComponent implements OnInit {
       .pipe(take(1))
       .subscribe(() => this._getBeeHives());
   }
-
-  get getCurrentGardenId() {
-    return this._beeGardenId.asObservable();
-  }
-
-
-  // get isOwner() {
-  //   const user = JSON.parse(localStorage.getItem('userData') as string);
-  //   // this._getBeeGardens();
-  //   if (user) {
-  //     if (this.beeGarden.ownerId === user.userId) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   }
-  //   return false;
-  // }
 }

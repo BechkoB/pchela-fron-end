@@ -13,29 +13,15 @@ import { SharedService } from 'src/app/services/shared.service';
 export class BeeGardensComponent implements OnInit {
   loginStatus$!: Observable<boolean>;
   beeGardens: any;
-  hasUser?: boolean;
-  email = '';
 
   constructor(
     private userService: UserService,
     private router: Router,
     private beeGardenService: BeeGardenService,
-    private sharedService: SharedService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loginStatus$ = this.userService.isLoggedIn;
-
-    const userData = JSON.parse(localStorage.getItem('userData') as string);
-
-    if (!userData) {
-      this.hasUser = false;
-    } else {
-      this.sharedService.currentEmail.subscribe(
-        (newEmail) => (this.email = newEmail)
-      );
-      this.hasUser = this.userService.autoLogin(userData);
-    }
 
     this.beeGardenService
       .getBeeGardens()
@@ -50,5 +36,5 @@ export class BeeGardensComponent implements OnInit {
   addGarden() {
     return this.router.navigate(['/addbeegardens']);
   }
- 
+
 }

@@ -15,7 +15,7 @@
   </section>
 
   <div class="btn-wrapper">
-    <button *ngIf="showAddBtn" mat-stroked-button class="addBtn" (click)="addHive()">
+    <button *ngIf="isOwner" mat-stroked-button class="addBtn" (click)="addHive()">
       Създай нов <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -29,13 +29,13 @@
     <div *ngFor="let hive of beeHives; let i = index" >
       <mat-card class="hive-card" (click)="onClick(hive?._id)">
 
-          <button *ngIf="showAddBtn" mat-flat-button class="delete-hive" (click)="onDelete($event, hive._id)">
+          <button *ngIf="isOwner" mat-flat-button class="delete-hive" (click)="onDelete($event, hive._id)">
             <mat-icon>delete_forever</mat-icon>
           </button>
           <mat-card-title-group>
             <mat-card-subtitle >{{ hive?.name }} - ред {{hive?.line}} </mat-card-subtitle>
           </mat-card-title-group>
-      
+
         <div class="d-flex">
           <div class="left">
             <div class="humidity">

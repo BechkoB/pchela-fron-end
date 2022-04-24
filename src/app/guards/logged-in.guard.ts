@@ -7,18 +7,13 @@ import { UserService } from '../services/user.service';
   providedIn: 'root'
 })
 export class LoggedInGuard implements CanActivate {
-  constructor(private _router: Router, private authService: UserService) {}
+  constructor(private _router: Router, private authService: UserService) { }
 
-  canActivate():
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+  canActivate(): boolean | UrlTree {
     if (this.authService.isUserLoggedIn()) {
       this._router.navigate(['/']);
       return false;
     }
-
     return true;
   }
 }
