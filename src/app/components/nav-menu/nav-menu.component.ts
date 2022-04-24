@@ -10,15 +10,18 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NavMenuComponent implements OnInit {
 
-  constructor(private _task: UserService, private _router: Router) {}
+  constructor(private _task: UserService, private _router: Router) { }
   loginStatus$!: Observable<boolean>;
   userName$!: Observable<string>;
-  isAdmin$!: Observable<boolean>;
 
   ngOnInit(): void {
+    const userData = JSON.parse(localStorage.getItem('userData') as string);
+    if (!userData) {
+      return;
+    }
+    this._task.autoLogin(userData);
     this.userName$ = this._task.currentUserName;
     this.loginStatus$ = this._task.isLoggedIn;
-    this.isAdmin$ = this._task.isAdmin;
   }
 
   onLogout() {

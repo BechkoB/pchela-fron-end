@@ -21,7 +21,7 @@ export class AddBeegardenComponent implements OnInit {
     private _beeGardenService: BeeGardenService,
     private _router: Router,
     private _httpService: HttpService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userData = JSON.parse(
@@ -40,7 +40,7 @@ export class AddBeegardenComponent implements OnInit {
 
     if (isNaN(lat) || isNaN(lng)) {
       this.loading = false;
-      return this._handleError('Моля, въведете само цифри за координатите');
+      throw new Error('Моля, въведете само цифри за координатите');
     }
     console.log(this.userData);
     this._beeGardenService
@@ -53,17 +53,11 @@ export class AddBeegardenComponent implements OnInit {
         },
         error: (err: any) => {
           this.loading = false;
-
+          this.hasError = true;
           if (err.error.msg) {
-            this._handleError(err.error.msg);
+            this.errorMsg = err.error.msg;
           }
         }
       });
   }
-
-  private _handleError(errorMessage: string) {
-    this.hasError = true;
-    this.errorMsg = errorMessage;
-  }
-
 }

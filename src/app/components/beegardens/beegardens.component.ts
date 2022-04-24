@@ -7,8 +7,8 @@ import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-beegardens',
-  templateUrl: './beeGardens.component.html',
-  styleUrls: ['./beeGardens.component.scss']
+  templateUrl: './beegardens.component.html',
+  styleUrls: ['./beegardens.component.scss']
 })
 export class BeeGardensComponent implements OnInit {
   loginStatus$!: Observable<boolean>;
@@ -50,4 +50,5 @@ export class BeeGardensComponent implements OnInit {
   addGarden() {
     return this.router.navigate(['/addbeegardens']);
   }
+ 
 }

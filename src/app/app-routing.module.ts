@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterModule, RouterStateSnapshot, Routes } from '@angular/router';
 
 import { AuthGuard } from './guards/auth.guard';
+import { OwnerGuard } from './guards/isOwner.guard';
+
 import { LoggedInGuard } from './guards/logged-in.guard';
 
 import { LoginComponent } from './components/login/login.component';
@@ -13,6 +15,7 @@ import { AddBeehiveComponent } from './components/add-beehive/add-beehive.compon
 import { BeehivesDataComponent } from './components/beehives-data/beehives-data.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,28 +30,32 @@ const routes: Routes = [
     canActivate: [LoggedInGuard]
   },
   {
+    path: 'my-profile',
+    component: MyProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'beegardens/list',
     component: BeeGardensComponent
   },
   {
     path: 'beegardens/:id',
-    component: BeehivesComponent,
-    canActivate: [AuthGuard]
+    component: BeehivesComponent
   },
   {
     path: 'addbeegardens',
     component: AddBeegardenComponent,
-    canActivate: [AuthGuard]
+    canActivate: [OwnerGuard]
   },
   {
     path: 'beegardens/:id/addbeehive',
     component: AddBeehiveComponent,
-    canActivate: [AuthGuard]
+    canActivate: [OwnerGuard]
   },
   {
     path: 'beegardens/:id/beehives/:id',
     component: BeehivesDataComponent,
-    canActivate: [AuthGuard]
+    canActivate: [OwnerGuard]
   },
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];

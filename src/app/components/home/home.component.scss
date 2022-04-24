@@ -1,22 +1,116 @@
 .header {
-  text-align: center;
-  margin-top: 10%;
-  h1 {
-    color: black;
+  margin-top: 5rem;
+  margin-left: 9rem;
+}
+h1 {
+    color: rgb(0, 0, 0);
     font-size: 32px;
+}
+
+.card {
+  width: calc(100% - 20rem);
+  max-width: 40rem;
+  height: 30rem;
+  background-color:rgba(196, 193, 193, 0.39);
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 30px;
+  margin-top  : 30px;
+  margin-left: 7rem;
+  p {
+    font-style: italic;
+    color: black;
+    margin-bottom: 10px;
+  }
+
+  img {
+    width: 45rem;
+    max-height: 19rem;
+  }
+
+}
+
+button {
+  background-color: rgba(180, 224, 58, 0.493);
+  margin-left: 30px;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.content {
+  position: absolute; /* Position the background text */
+  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1; /* Grey text */
+  width: 100%; /* Full width */
+  padding: 20px; /* Some padding */
+  h1 {
+  color: #f1f1f1; /* Grey text */
   }
 }
 
-section {
-  width: calc(100% - 20rem);
-  max-width: 40rem;
-  background-color:rgba(196, 193, 193, 0.39);
-  border-radius: 20px;
-  padding: 20px;
-  text-align: center;
-  p {
-    font-style: italic;
-    margin:  auto;
-    color: black;
+
+.right-section {
+  width: 20%;
+  margin-top: 1em;
+  font-size: 0.8em;
+  position: absolute;
+  right: 7rem;
+}
+
+.aside {
+  margin: 0;
+  padding: 0;
+
+  .title {
+    padding: 1px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 22px;
   }
 }
+
+.aside>div {
+  border: 1px solid #999;
+  border-radius: 0.3em;
+  padding: 0.3em 0.5em;
+}
+
+.title {
+  font-size: 1.5em;
+  border-bottom: none;
+  color: #f1f1f1;
+}
+
+.aside .aside-theme {
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+}
+
+.aside h3 {
+  border-bottom: none;
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+  background-color: #dce92b9a;
+  padding-left: 0.5rem;
+}
+
+.aside-theme+.aside-theme {
+  border-top: dashed 1px #999;
+}
+
+.aside-theme p {
+  text-align: right;
+  font-size: 16px;
+  color: white;
+}
+
+.aside-theme a {
+  text-decoration: none;
+  color: inherit;
+}
+

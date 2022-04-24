@@ -6,7 +6,8 @@ import { IBeeGarden } from '../interfaces/interfaces';
   providedIn: 'root'
 })
 export class BeeGardenService {
-  constructor(private readonly _httpService: HttpService) {}
+  constructor(private readonly _httpService: HttpService,
+    ) {}
 
   getBeeGardenById(id: string) {
     return this._httpService.get<IBeeGarden>(`beegardens/${id}`);
@@ -18,5 +19,9 @@ export class BeeGardenService {
 
   addGarden(body: any) {
     return this._httpService.post('beegardens/add', body);
+  }
+
+  getRecentBeeGardens() {
+    return this._httpService.get('beegardens/recent');
   }
 }

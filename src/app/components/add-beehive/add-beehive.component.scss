@@ -1,0 +1,27 @@
+.form-container {
+  position: relative;
+  align-items: center;
+  margin-top: 10%;
+
+  .add-form {
+    margin: auto;
+    min-width: 100px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  button {
+    display: block;
+    margin: auto;
+    width: 20%;
+  }
+
+  .notification.is-danger {
+    text-align: center;
+  }
+
+}

@@ -4,22 +4,17 @@
       <img src="../assets/img/login-register-logo.png" alt="" />
     </div>
     <span>
-      <a routerLink="/"><span>ОГ</span> Пчела </a>
+      <a routerLink="/"><span>БГ</span> Пчела </a>
     </span>
     <span class="spacer"></span>
+    <div>
+      <a class="login" routerLink="/beegardens/list">Пчелини</a>
+    </div>
     <div *ngIf="(loginStatus$ | async) === false as loginStatus">
       <a class="login" routerLink="/login" *ngIf="loginStatus">Вход</a>
     </div>
     <div *ngIf="(loginStatus$ | async) === false as loginStatus">
-      <a class="login" routerLink="/register" *ngIf="loginStatus"
-        >Регистрация</a
-      >
-    </div>
-
-    <div *ngIf="(loginStatus$ | async) === false as loginStatus">
-      <a class="login" routerLink="/beegardens/list" *ngIf="loginStatus"
-        >Пчелини</a
-      >
+      <a class="login" routerLink="/register" *ngIf="loginStatus">Регистрация</a>
     </div>
 
     <div class="username" *ngIf="userName$ | async as UserName">
@@ -33,7 +28,7 @@
 
     <div *ngIf="(loginStatus$ | async) === true as loginStatus">
       <button
-      *ngIf="loginStatus"
+        *ngIf="loginStatus"
         mat-icon-button
         class="example-icon"
         aria-label="Example icon-button with menu icon"

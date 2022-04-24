@@ -19,6 +19,7 @@ import { AddBeehiveComponent } from './components/add-beehive/add-beehive.compon
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
+import { MyProfileComponent } from './components/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { HomeComponent } from './components/home/home.component';
     ConfirmDialogComponent,
     RandomColorPipe,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { HomeComponent } from './components/home/home.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [{ provide: BeehivesDataComponent }],
+  providers: [{ provide: BeehivesDataComponent }, {provide: BeehivesComponent}],
   entryComponents: [ConfirmDialogComponent],
   bootstrap: [AppComponent]
 })

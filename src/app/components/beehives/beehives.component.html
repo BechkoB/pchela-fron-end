@@ -1,1 +1,65 @@
-<p>beehives works!</p>
+<section id="breadcrumbs">
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li>
+        <a routerLink="/beegardens/list">
+          <span class="icon is-small">
+            <i class="fas fa-home" aria-hidden="true"></i>
+          </span>
+          <span>Пчелини</span>
+        </a>
+      </li>
+      <li class="is-active"><a aria-current="page">{{this.beeGarden?.name}} - Кошери</a></li>
+    </ul>
+  </nav>
+  </section>
+
+  <div class="btn-wrapper">
+    <button *ngIf="showAddBtn" mat-stroked-button class="addBtn" (click)="addHive()">
+      Създай нов <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <section *ngIf="!(beeHives?.length > 0)">
+    <h1>Все още няма добавени кошери...</h1>
+  </section>
+  <div
+    class="hives-container grid grid--cols-5 grid--row-gap-20 grid--column-gap-60"
+  >
+    <div *ngFor="let hive of beeHives; let i = index" >
+      <mat-card class="hive-card" (click)="onClick(hive?._id)">
+
+          <button *ngIf="showAddBtn" mat-flat-button class="delete-hive" (click)="onDelete($event, hive._id)">
+            <mat-icon>delete_forever</mat-icon>
+          </button>
+          <mat-card-title-group>
+            <mat-card-subtitle >{{ hive?.name }} - ред {{hive?.line}} </mat-card-subtitle>
+          </mat-card-title-group>
+      
+        <div class="d-flex">
+          <div class="left">
+            <div class="humidity">
+              <mat-icon>water_drop</mat-icon>
+              <span class="humidity-text">45%</span>
+            </div>
+            <div class="temperature">
+              <mat-icon>thermostat</mat-icon>
+              <span class="temperature-text">18°C</span>
+            </div>
+            <div class="weight">
+              <mat-icon>fitness_center</mat-icon>
+              <span class="weight-text">8kg</span>
+            </div>
+          </div>
+          <div class="right">
+            <img
+              mat-card-lg-image
+              src="../../../../assets/img/login-register-logo.png"
+            />
+            <div class="location">{{ beeGarden?.name }}</div>
+          </div>
+        </div>
+        <div class="color-box" [style.background-color]="'' | randomColor"></div>
+      </mat-card>
+    </div>
+  </div>

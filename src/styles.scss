@@ -201,9 +201,10 @@ mat-grid-list {
 }
 
 .mat-menu-panel {
-  background: #3e2be9d3;
+  background: #dce92bb6;
   button {
     color: white;
+    font-size: 18px;
   }
 }
 
@@ -212,4 +213,14 @@ mat-grid-list {
   position: absolute;
   padding: 10px;
   left: 40px;
+}
+
+.margin-left-10 {
+  margin-left: 20px;
+}
+.margin-left-20 {
+  margin-left: 20px;
+}
+.margin-left-40 {
+  margin-left: 20px;
 }

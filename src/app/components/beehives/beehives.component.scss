@@ -1,0 +1,84 @@
+.hives-container {
+  margin-top: 60px;
+  padding: 40px;
+}
+
+.btn-wrapper {
+  position: absolute;
+  right: 12rem;
+  top: 5rem;
+}
+.addBtn {
+  position: absolute;
+  font-size: 16px;
+  background-color: white;
+  padding: 5px 20px;
+}
+
+mat-card-subtitle {
+  font-size: 20px;
+  font-style: italic;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.color-box {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 0;
+  height: 15px;
+}
+
+.d-flex {
+  position: relative;
+  display: flex;
+  bottom: 50px;
+
+  .left {
+    margin-top: auto;
+  }
+
+  .right {
+    text-align: center;
+    margin-left: auto;
+  }
+}
+
+.humidity,
+.temperature,
+.weight {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.humidity-text,
+.temperature-text,
+.weight-text {
+  margin-left: 5px;
+}
+
+.delete-hive {
+  position: absolute;
+  right: 0%;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.hive-card {
+  cursor: pointer;
+  -webkit-box-shadow: 10px 10px 17px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 17px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 17px -4px rgba(0, 0, 0, 0.2);
+  height: 90%;
+}
+
+section h1 {
+  position: relative;
+  margin-top: 15%;
+  text-align: center;
+}

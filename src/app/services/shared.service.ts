@@ -7,6 +7,8 @@ import { IBeeHiveData } from '../interfaces/interfaces';
 })
 export class SharedService {
   private _email = new BehaviorSubject<string>('');
+
+
   allBeeHivaData: Array<IBeeHiveData> = [];
   currentEmail = this._email.asObservable();
   constructor() {}
@@ -14,10 +16,12 @@ export class SharedService {
   updateEmail(newEmail: string) {
     this._email.next(newEmail);
   }
+
   setData(newData: Array<IBeeHiveData>) {
     this.allBeeHivaData = newData;
   }
   getData() {
     return this.allBeeHivaData;
   }
+
 }
