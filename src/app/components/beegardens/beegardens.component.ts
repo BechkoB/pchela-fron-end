@@ -34,6 +34,7 @@ export class BeeGardensComponent implements OnInit {
   }
 
   addGarden() {
+    console.log('addGarden called');
     return this.router.navigate(['/addbeegardens']);
   }
 

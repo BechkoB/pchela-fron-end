@@ -4,7 +4,6 @@ import { take } from 'rxjs/operators';
 
 
 import { CanActivate, UrlTree } from '@angular/router';
-import { BeehivesComponent } from '../components/beehives/beehives.component'
 import { SharedService } from '../services/shared.service';
 
 

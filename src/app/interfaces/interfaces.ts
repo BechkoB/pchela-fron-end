@@ -1,24 +1,30 @@
 export interface IBeeHive {
-  id: string;
+  _id: string;
   beeGarden: string;
   name?: string;
   line?: number;
 }
 
 export interface IBeeGarden {
-  _id?: string;
-  ownerId?: string;
-  name?: string;
-  lat?: number;
-  lng?: number;
+  _id: string;
+  ownerId: string;
+  name: string;
+  createdAt: string
+  lat: number;
+  lng: number;
 }
 
 export interface IUser {
+  _id: string;
   email: string;
-  success: boolean;
+  firstName: string;
+  secondName: string;
+  phone: string;
   token: string;
   tokenExpiresIn: number;
-  userid: string;
+  userid?: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IBeeHiveData {

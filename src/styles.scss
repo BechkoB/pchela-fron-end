@@ -73,10 +73,14 @@ body {
   background-color: white;
 }
 
-.icon.is-medium {
-  padding-bottom: 10px;
-  height: 2rem;
+.icon {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+  height: 1.5rem;
   width: 2rem;
+  position: relative;
+  top: -5px;
 }
 
 mat-grid-list {

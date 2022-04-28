@@ -15,13 +15,8 @@ export class NavMenuComponent implements OnInit {
   userName$!: Observable<string>;
 
   ngOnInit(): void {
-    const userData = JSON.parse(localStorage.getItem('userData') as string);
-    if (!userData) {
-      return;
-    }
-    this._task.autoLogin(userData);
-    this.userName$ = this._task.currentUserName;
     this.loginStatus$ = this._task.isLoggedIn;
+    this.userName$ = this._task.currentUserName;
   }
 
   onLogout() {

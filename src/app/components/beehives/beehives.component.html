@@ -15,21 +15,21 @@
   </section>
 
   <div class="btn-wrapper">
-    <button *ngIf="isOwner" mat-stroked-button class="addBtn" (click)="addHive()">
+    <button *ngIf="showBtn" mat-stroked-button class="addBtn" (click)="addHive()">
       Създай нов <mat-icon>add</mat-icon>
     </button>
   </div>
 
-  <section *ngIf="!(beeHives?.length > 0)">
+  <section *ngIf="!(beeHives.length > 0)">
     <h1>Все още няма добавени кошери...</h1>
   </section>
   <div
     class="hives-container grid grid--cols-5 grid--row-gap-20 grid--column-gap-60"
   >
     <div *ngFor="let hive of beeHives; let i = index" >
-      <mat-card class="hive-card" (click)="onClick(hive?._id)">
+      <mat-card class="hive-card" (click)="onClick(hive._id)">
 
-          <button *ngIf="isOwner" mat-flat-button class="delete-hive" (click)="onDelete($event, hive._id)">
+          <button *ngIf="showBtn" mat-flat-button class="delete-hive" (click)="onDelete($event, hive._id)">
             <mat-icon>delete_forever</mat-icon>
           </button>
           <mat-card-title-group>

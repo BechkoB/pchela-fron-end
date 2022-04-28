@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { take, BehaviorSubject } from 'rxjs';
+import { take } from 'rxjs';
 import { BeeHivesService } from '../../services/hives.service';
 import { DialogService } from 'src/app/services/dialog.service';
 import { BeeGardenService } from 'src/app/services/beegarden.service';
-import { IBeeGarden } from '../../interfaces/interfaces';
+import { IBeeGarden, IBeeHive } from '../../interfaces/interfaces';
 import { SharedService } from 'src/app/services/shared.service';
 
 
@@ -17,8 +17,9 @@ export class BeehivesComponent implements OnInit {
 
   beeGarden!: IBeeGarden;
   beeGardenId: string = '';
-  beeHives: any;
+  beeHives: IBeeHive[] = [];
   isOwner = false;
+  showBtn = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -35,7 +36,7 @@ export class BeehivesComponent implements OnInit {
     this._getBeeHives();
     this._sharedService.ownerStatusGetter.pipe(take(1)).subscribe(value => {
       this.isOwner = value;
-    })
+    });
   }
 
   private _getBeeGardens() {
@@ -45,7 +46,6 @@ export class BeehivesComponent implements OnInit {
       .subscribe((beeGarden) => {
         this.beeGarden = beeGarden;
         this._sharedService.updateOwnerStatus(this.checkForOwner(beeGarden));
-        // this.isOwner.subscribe(value => console.log(value));
       });
   }
 
@@ -60,15 +60,13 @@ export class BeehivesComponent implements OnInit {
     const user = JSON.parse(localStorage.getItem('userData') as string);
     if (user) {
       if (beeGarden.ownerId === user.userId) {
+        this.showBtn = true;
         return true;
       }
     }
+    this.showBtn = false;
     return false;
   }
-
-  // get isOwnerGetter() {
-  //   return this.isOwner.asObservable();
-  // }
 
   onClick(id: string) {
     return this._router.navigate([

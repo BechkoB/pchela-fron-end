@@ -14,9 +14,9 @@ export class RegisterComponent implements OnInit {
   hasError = false;
   errorMsg = 'Нещо се обърка. Моля опитайте пак.';
 
-  constructor(private _task: UserService, private _router: Router) {}
+  constructor(private _task: UserService, private _router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required]),

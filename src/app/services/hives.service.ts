@@ -8,10 +8,10 @@ import { IBeeHive } from '../interfaces/interfaces';
   providedIn: 'root'
 })
 export class BeeHivesService {
-  constructor(private readonly _httpService: HttpService) {}
+  constructor(private readonly _httpService: HttpService) { }
 
   getBeeHives(id: string) {
-    return this._httpService.get(`beegardens/${id}/hives`);
+    return this._httpService.get<IBeeHive[]>(`beegardens/${id}/hives`);
   }
 
   deleteHive(id: string) {

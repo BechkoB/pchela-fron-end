@@ -1,20 +1,17 @@
 <div>
   <mat-toolbar>
     <div class="logo-img">
-      <img src="../assets/img/login-register-logo.png" alt="" />
+      <a routerLink="/"><img src="../assets/img/login-register-logo.png" alt="" /></a>
     </div>
     <span>
-      <a routerLink="/"><span>БГ</span> Пчела </a>
+      <a routerLink="/beegardens/list"><span>БГ</span> Пчела </a>
     </span>
     <span class="spacer"></span>
-    <div>
-      <a class="login" routerLink="/beegardens/list">Пчелини</a>
+    <div *ngIf="!(loginStatus$ | async)">
+      <a class="login" routerLink="/login">Вход</a>
     </div>
-    <div *ngIf="(loginStatus$ | async) === false as loginStatus">
-      <a class="login" routerLink="/login" *ngIf="loginStatus">Вход</a>
-    </div>
-    <div *ngIf="(loginStatus$ | async) === false as loginStatus">
-      <a class="login" routerLink="/register" *ngIf="loginStatus">Регистрация</a>
+    <div *ngIf="!(loginStatus$ | async)">
+      <a class="login" routerLink="/register" >Регистрация</a>
     </div>
 
     <div class="username" *ngIf="userName$ | async as UserName">

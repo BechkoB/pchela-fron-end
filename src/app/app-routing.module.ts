@@ -12,7 +12,7 @@ import { BeeGardensComponent } from './components/beegardens/beegardens.componen
 import { BeehivesComponent } from './components/beehives/beehives.component';
 import { AddBeegardenComponent } from './components/add-beegarden/add-beegarden.component';
 import { AddBeehiveComponent } from './components/add-beehive/add-beehive.component';
-import { BeehivesDataComponent } from './components/beehives-data/beehives-data.component';
+import { HivesDataComponent } from './components/hives-data/hives-data.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
@@ -45,7 +45,7 @@ const routes: Routes = [
   {
     path: 'addbeegardens',
     component: AddBeegardenComponent,
-    canActivate: [OwnerGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'beegardens/:id/addbeehive',
@@ -54,14 +54,14 @@ const routes: Routes = [
   },
   {
     path: 'beegardens/:id/beehives/:id',
-    component: BeehivesDataComponent,
+    component: HivesDataComponent,
     canActivate: [OwnerGuard]
   },
   { path: '**', pathMatch: 'full', component: NotFoundComponent },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

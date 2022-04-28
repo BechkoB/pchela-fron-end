@@ -1,0 +1,98 @@
+
+.notification.is-danger {
+  text-align: center;
+}
+
+.profile-box {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+
+
+  .profile-logo {
+    display: flex;
+    justify-content: center;
+    img {
+      max-height: 70px;
+      min-width: 70px;
+      min-height: 60px;
+      position: relative;
+      bottom: 15px;
+    }
+  }
+
+  form {
+    min-width: 240px;
+    -webkit-box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.8);
+    padding: 40px 60px;
+  }
+
+  .field {
+    text-align: center;
+    padding-top: 10px;
+
+    button {
+      width: 70%;
+      font-size: large;
+      margin-top: 10px;
+      background-color: rgb(160, 161, 48);
+    }
+  }
+  .isregistered {
+    margin-left: 20px;
+    font-style: italic;
+    color: white;
+    font-size: 18px;
+  }
+  .login {
+    font-style: italic;
+    font-size: 20px;
+    color: rgb(136, 255, 0);
+  }
+  mat-form-field {
+    display: block;
+  }
+  .notification.is-danger {
+    text-align: center;
+  }
+}
+
+.edit-btns {
+  display: flex;
+  justify-content: center;
+  button {
+    display: relative;
+    margin: 10px;
+    width: 40%;
+    font-size: large;
+    top: 10px;
+    background-color: rgb(160, 161, 48);
+  }
+}
+
+h2 {
+  font-size: 28px;
+  color: white;
+
+  a {
+    font-style: italic;
+    color:rgb(160, 161, 48);
+    // text-decoration: underline;
+  }
+}
+
+.profile-form {
+  width: 400px;
+}
+
+.profile-card {
+  display: flex;
+  justify-content:space-around;
+}
+
+img {
+  max-height: 350px;
+}

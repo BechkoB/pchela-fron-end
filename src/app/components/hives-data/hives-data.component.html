@@ -1,0 +1,319 @@
+<section class="is-centered">
+  <nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+      <li>
+        <a routerLink="/beegardens/list">
+          <span class="icon is-small">
+            <i class="fas fa-home" aria-hidden="true"></i>
+          </span>
+          <span>Пчелини</span>
+        </a>
+      </li>
+      <li>
+        <a (click)="goBack()">{{ beeGarden?.name }} - Кошери</a>
+      </li>
+      <li class="is-active">
+        <a aria-current="page">{{
+          beeHive?.name + ' - ред ' + beeHive?.line
+          }}</a>
+      </li>
+    </ul>
+  </nav>
+</section>
+
+<div class="example-button-row">
+  <!-- <button mat-raised-button (click)="onClick()" type="button">
+    {{showSensors ? 'Скрий Данни Сензори' : 'Покажи Данни Сензори'}}
+  </button> -->
+  <button mat-raised-button class="sendData" (click)="onSubmit()">Запази Дани</button>
+</div>
+
+<form class="testimonial-grid" [formGroup]="form">
+  <article class="grid_1 testimonial flow bg-primary-400 quote text-neutral-100">
+    <div class="flex">
+      <mat-form-field appearance="legacy" class="date-picker">
+        <mat-label>Избери дата</mat-label>
+        <input matInput
+               [matDatepicker]="picker"
+               formControlName="time"
+               (dateChange)="onDateChange($event)" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="box-1" [style.background-color]="'' | randomColor"></div>
+  </article>
+  <article class="grid_2 testimonial flow bg-secondary-400 text-neutral-100"
+           [formGroup]="cellForm">
+    <div>
+      <mat-form-field appearance="fill" class="icell-selector">
+        <mat-label>Избери инкубаторна клетка</mat-label>
+        <mat-select [(value)]="selectedCell"
+                    (selectionChange)="gridTwoData(selectedCell)">
+          <mat-option *ngFor="let cell of cells; let i = index" [value]="i">
+            {{ cell.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="selectedCell !== undefined">
+        <div class="temperature-2">
+          <span class="hive-temp">Температура</span>
+          <div class="display-hive-temp">
+            <mat-form-field appearance="legacy" class="celltemp-input">
+              <input matInput
+                     formControlName="temp"
+                     placeholder="°C"
+                     type="number" />
+            </mat-form-field>
+          </div>
+          <div class="temp-btns">
+            <button
+              mat-stroked-button
+              class="temp-btn-up"
+              (click)="incrementOrDecrementCellDataValue('temp', true)"
+            >
+              <i class="fas fa-chevron-up"></i>
+            </button>
+            <button
+              mat-stroked-button
+              class="temp-btn-down"
+              (click)="incrementOrDecrementCellDataValue('temp', false)"
+            >
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+        <div class="humidity-2">
+          <span class="hive-humidity">Влажност</span>
+          <div class="display-hive-humidity">
+            <mat-form-field appearance="legacy" class="cellhumidity-input">
+              <input matInput
+                     formControlName="humidity"
+                     placeholder="%"
+                     type="number" />
+            </mat-form-field>
+          </div>
+          <div class="humid-btns">
+            <button
+              mat-stroked-button
+              class="humid-btn-up"
+              (click)="incrementOrDecrementCellDataValue('humidity', true)"
+            >
+              <i class="fas fa-chevron-up"></i>
+            </button>
+            <button
+              mat-stroked-button
+              class="humid-btn-down"
+              (click)="incrementOrDecrementCellDataValue('humidity', false)"
+            >
+              <i class="fas fa-chevron-down"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button mat-raised-button (click)="showData(['cellData'])" class="records-btn">Записи</button>
+    <div class="box-1" [style.background-color]="'' | randomColor"></div>
+  </article>
+  <article class="grid_3 testimonial flow bg-neutral-100 text-secondary-400">
+    <div class="grid-tile-3">
+      <div class="eggsweight-div">
+        <span class="eggs-weight-text">
+          <p>Тегло на оплодените яйца</p>
+        </span>
+        <mat-form-field class="eggs-weight-value" appearance="legacy">
+          <input matInput type="number" formControlName="eggsWeight" />
+        </mat-form-field>
+      </div>
+      <div class="queens-count-div">
+        <span class="queens-count-text">
+          <p>Брой на яйчните тръбички на пчелите майки</p>
+        </span>
+        <mat-form-field class="queens-count-value" appearance="legacy">
+          <input matInput
+                 type="number"
+                 formControlName="queensCount" />
+        </mat-form-field>
+      </div>
+      <div class="queens-weight-div">
+        <span class="queens-weight-text">
+          <p>Маса на пчелните майки</p>
+        </span>
+        <mat-form-field class="queens-weight-value" appearance="legacy">
+          <input matInput type="number" formControlName="queensWeight" />
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-raised-button (click)="showData(['eggsWeight', 'queensWeight', 'queensCount'])" class="records-btn">Записи</button>
+    <div class="box-1" [style.background-color]="'' | randomColor"></div>
+  </article>
+  <article class="grid_4 testimonial flow bg-secondary-500 text-neutral-100">
+    <div class="flex">
+      <div class="otvodki-info">
+        <mat-form-field
+          class="example-full-width otvodki-value"
+          appearance="fill"
+        >
+          <mat-label>Информация за отводки</mat-label>
+          <textarea matInput formControlName="layersInfo"></textarea>
+        </mat-form-field>
+      </div>
+      <div class="inputs">
+        <div class="pitas-counts">
+          <p>Брой на питите в кошера</p>
+          <mat-form-field appearance="legacy" class="pitas-input">
+            <input matInput placeholder="Брой пити" type="number" formControlName="honeyCombCount" />
+          </mat-form-field>
+        </div>
+        <div class="pilo-counts">
+          <p>Брой пити с пило</p>
+          <mat-form-field appearance="legacy" class="pilo-input">
+            <input
+              matInput
+              type="number"
+              placeholder="Брой пити с пило"
+              formControlName="broodCount"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="bees-info">
+        <mat-form-field class="example-full-width bees-value" appearance="fill">
+          <mat-label>Състояние на семейството</mat-label>
+          <textarea matInput name="message" formControlName="beesInfo"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-raised-button (click)="showData(['beesInfo', 'layersInfo', 'broodCount', 'honeyCombCount'])" class="records-btn">Записи</button>
+    <div class="box-1" [style.background-color]="'' | randomColor"></div>
+  </article>
+  <article class="grid_5 testimonial flow bg-neutral-100 text-secondary-400">
+    <div class="flex">
+      <mat-form-field appearance="fill" class="fathers-family-info">
+        <mat-label>Бащини семейства</mat-label>
+        <textarea matInput formControlName="familyInfo"></textarea>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button (click)="showData(['familyInfo'])" class="records-btn">Записи</button>
+    <div class="box-1" [style.background-color]="'' | randomColor"></div>
+  </article>
+  <article class="grid_6 testimonial flow bg-neutral-100 text-secondary-400">
+    <div class="flex">
+      <div class="hive-weight">
+        <p>Тегло на кошера</p>
+        <div class="weight">
+          <span class="icon is-small is-left">
+            <i class="fas fa-weight-hanging fa-2x"></i>
+          </span>
+          <mat-form-field appearance="legacy" class="hive-weight-input">
+            <input matInput type="number" formControlName="hiveWeight" placeholder="kg" />
+          </mat-form-field>
+        </div>
+        <div class="weight-btns">
+          <button
+            mat-stroked-button
+            class="weight-btn-up"
+            (click)="incrementOrDecrementHiveWeight(true)"
+          >
+            <i class="fas fa-chevron-up"></i>
+          </button>
+          <button
+            mat-stroked-button
+            class="weight-btn-down"
+            (click)="incrementOrDecrementHiveWeight(false)"
+          >
+            <i class="fas fa-chevron-down"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <button mat-raised-button (click)="showData(['hiveWeight'])" class="records-btn">Записи</button>
+    <div class="box-1" [style.background-color]="'' | randomColor"></div>
+  </article>
+  <article class="grid_7 testimonial flow bg-neutral-100 text-secondary-400">
+    <div class="flex">
+      <div class="outside-temp">
+        <div class="temp-text">
+        <span class="outside-temp-text">
+          <p>Околна Температура</p>
+        </span>
+        </div>
+        <div class="temp-value">
+        <span class="icon is-large is-left">
+          <i class="fas fa-temperature-low fa-2x"></i>
+          <div class="temp-div">{{beeHiveData?.data?.outsideTemp}} °C</div>
+        </span>
+        </div>
+      </div>
+      <div class="outside-humid">
+      <span class="humid-text">
+        <p>Околна Влажност</p>
+      </span>
+        <div class="humid-value">
+        <span class="icon is-large is-left">
+          <i class="fas fa-tint fa-2x"></i>
+          <div class="humidity-div">{{beeHiveData?.data?.outsideHumid}} %</div>
+        </span>
+        </div>
+      </div>
+    </div>
+    <button mat-raised-button (click)="showData(['outsideTemp', 'outsideHumid'])" class="records-btn">Записи</button>
+    <div class="box-1" [style.background-color]="'' | randomColor"></div>
+  </article>
+  <article class="grid_8 testimonial flow bg-neutral-100 text-secondary-400">
+    <div class="grid-8-wrapper">
+      <div>
+        <div class="natural-input">
+        <span class="natural-slider-text">
+          <p>Естествено осеменени пчели</p>
+        </span>
+          <mat-slider
+            class="natural-slider"
+            [disabled]="matSliderConfig.disabled"
+            [invert]="matSliderConfig.invert"
+            [max]="matSliderConfig.max"
+            [min]="matSliderConfig.min"
+            [step]="matSliderConfig.step"
+            [thumbLabel]="matSliderConfig.thumbLabel"
+            [tickInterval]="getSliderTickInterval()"
+            [vertical]="matSliderConfig.vertical"
+            (change)="patchFormValue('naturalValue', $event.value)"
+            [value]="form.get('naturalValue')?.value"
+            aria-labelledby="example-name-label"
+          >
+          </mat-slider>
+          <mat-form-field class="natural-slider-value" appearance="legacy">
+            <input matInput type="number" formControlName="naturalValue" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <div class="unnatural-input">
+        <span class="unnatural-slider-text">
+          <p>Изкуственно осеменени пчели</p>
+        </span>
+          <mat-slider
+            class="unnatural-slider"
+            [disabled]="matSliderConfig.disabled"
+            [invert]="matSliderConfig.invert"
+            [max]="matSliderConfig.max"
+            [min]="matSliderConfig.min"
+            [step]="matSliderConfig.step"
+            [thumbLabel]="matSliderConfig.thumbLabel"
+            [tickInterval]="getSliderTickInterval()"
+            [vertical]="matSliderConfig.vertical"
+            (change)="patchFormValue('unnaturalValue', $event.value)"
+            [value]="form.get('unnaturalValue')?.value"
+            aria-labelledby="example-name-label"
+          >
+          </mat-slider>
+          <mat-form-field class="unnatural-slider-value" appearance="legacy">
+            <input matInput type="number" formControlName="unnaturalValue" />
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+    <button mat-raised-button (click)="showData(['unnaturalValue', 'naturalValue'])" class="records-btn">Записи</button>
+    <div class="box-1" [style.background-color]="'' | randomColor"></div>
+  </article>
+</form>

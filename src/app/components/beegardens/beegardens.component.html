@@ -1,7 +1,7 @@
 <section id="breadcrumbs">
   <nav class="breadcrumb" aria-label="breadcrumbs">
     <ul>
-      <li class="is-active"><a routerLink="/beegardens">
+      <li class="is-active"><a routerLink="/beegardens/list">
         <span class="icon is-small">
           <i class="fas fa-home" aria-hidden="true"></i>
         </span>
@@ -11,12 +11,11 @@
   </nav>
 </section>
 
-
 <div class="btn-wrapper" [ngStyle]="{'display': (loginStatus$ | async) ? '' : 'none' }">
   <button mat-stroked-button class="addBtn" (click)="addGarden()">
     Създай нов <mat-icon>add</mat-icon>
   </button>
-</div> 
+</div>
 <div
   class="bee-gardens-container grid grid--cols-5 grid--row-gap-20 grid--column-gap-60"
 >

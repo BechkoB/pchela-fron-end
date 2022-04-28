@@ -24,6 +24,10 @@
         "@angular/material-moment-adapter": "^13.2.6",
         "@angular/platform-browser": "~13.2.0",
         "@angular/platform-browser-dynamic": "~13.2.0",
-        "@angular/router": "~13.2.0"
+        "@angular/router": "~13.2.0",
+        "lodash": "^4.17.21"
+    },
+    "devDependencies": {
+        "@types/lodash": "^4.14.182"
     }
 }

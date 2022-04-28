@@ -6,7 +6,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="onRegister(registerForm)">
       <mat-form-field appearance="outline">
         <span matPrefix class="icon is-medium is-left">
-          <i class="fas fa-user"></i>
+          <i class="fas fa-at"></i>
         </span>
         <input
           matInput
@@ -16,7 +16,7 @@
           minlength="3"
           email
         />
-        <mat-error> Моля въвдете валиден имейл!</mat-error>
+        <mat-error> Моля въвдете валиден имейл! Mин 3 символа!</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <span matPrefix class="icon is-medium is-left">

@@ -13,13 +13,14 @@ import { RegisterComponent } from './components/register/register.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { BeeGardensComponent } from './components/beegardens/beegardens.component';
 import { BeehivesComponent } from './components/beehives/beehives.component';
-import { BeehivesDataComponent } from './components/beehives-data/beehives-data.component';
 import { AddBeegardenComponent } from './components/add-beegarden/add-beegarden.component';
 import { AddBeehiveComponent } from './components/add-beehive/add-beehive.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
+import { HivesDataComponent } from './components/hives-data/hives-data.component';
+import { HivesDataReportComponent } from './components/hives-data/hives-data-report/hives-data-report.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +30,15 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     NavMenuComponent,
     BeeGardensComponent,
     BeehivesComponent,
-    BeehivesDataComponent,
     AddBeegardenComponent,
     AddBeehiveComponent,
     ConfirmDialogComponent,
     RandomColorPipe,
     NotFoundComponent,
     HomeComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    HivesDataComponent,
+    HivesDataReportComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,7 @@ import { MyProfileComponent } from './components/my-profile/my-profile.component
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [{ provide: BeehivesDataComponent }, {provide: BeehivesComponent}],
+  providers: [{ provide: HivesDataComponent }, { provide: BeehivesComponent }],
   entryComponents: [ConfirmDialogComponent],
   bootstrap: [AppComponent]
 })

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, take } from 'rxjs';
-import { UserService } from '../../services/user.service';
+import { take } from 'rxjs';
 import { animate, query, stagger, style, transition, trigger } from '@angular/animations';
 import { BeeGardenService } from 'src/app/services/beegarden.service';
+import { IBeeGarden } from 'src/app/interfaces/interfaces';
 
 
 
@@ -15,7 +15,7 @@ import { BeeGardenService } from 'src/app/services/beegarden.service';
       transition(':enter', [
         query('.anim', [
           style({ opacity: 0, transform: 'translateX(-40px)' }),
-          stagger('200ms', [
+          stagger('500ms', [
             animate('800ms 1.2s ease-out',
               style({ opacity: 1, transform: 'translateX(0)' }))
           ])
@@ -47,26 +47,11 @@ import { BeeGardenService } from 'src/app/services/beegarden.service';
   ]
 })
 export class HomeComponent implements OnInit {
-  loginStatus$!: Observable<boolean>;
-  hasUser?: boolean;
-  beeGardens: any;
+  beeGardens?: IBeeGarden[];
 
-
-  constructor(
-    private userService: UserService,
-    private beeGardenService: BeeGardenService,
-  ) { }
+  constructor(private beeGardenService: BeeGardenService) { }
 
   ngOnInit(): void {
-    this.loginStatus$ = this.userService.isLoggedIn;
-
-    const userData = JSON.parse(localStorage.getItem('userData') as string);
-
-    if (!userData) {
-      this.hasUser = false;
-    } else {
-      this.hasUser = this.userService.autoLogin(userData);
-    }
     this.getBeeGardens();
   }
 
