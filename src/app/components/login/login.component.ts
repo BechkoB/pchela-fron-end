@@ -15,15 +15,12 @@ export class LoginComponent implements OnInit {
   errorMsg = 'Нещо се обърка. Моля опитайте пак.';
   hasError = false;
 
-  constructor(private task: UserService, private router: Router) {}
+  constructor(private task: UserService, private router: Router) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.minLength(6)
-    ]),
+    password: new FormControl(''),
     checked: new FormControl('false')
   });
 

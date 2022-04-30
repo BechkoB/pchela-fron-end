@@ -2,11 +2,11 @@
   <nav class="breadcrumb" aria-label="breadcrumbs">
     <ul>
       <li><a routerLink="/beegardens/list">
-        <span class="icon is-small">
-          <i class="fas fa-home" aria-hidden="true"></i>
-        </span>
-        <span>Пчелини</span>
-      </a></li>
+          <span class="icon is-small">
+            <i class="fas fa-home" aria-hidden="true"></i>
+          </span>
+          <span>Пчелини</span>
+        </a></li>
       <li><a (click)="goBack()">{{beeGarden?.name}} - Кошери</a></li>
       <li class="is-active"><a aria-current="page">Добави Кошер</a></li>
     </ul>
@@ -14,25 +14,21 @@
 </section>
 
 <div class="form-container">
-  <form
-      class="add-form"
-      *ngIf="formInput"
-      [formGroup]="formInput"
-      (ngSubmit)="onSubmit(formInput)"
-    >
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Име на Кошер</mat-label>
-        <input formControlName="name" matInput required />
-      </mat-form-field>
-      <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Ред</mat-label>
-        <input formControlName="line" matInput required />
-      </mat-form-field>
-      <div class="notification is-danger" *ngIf="hasError">{{errorMsg}}</div>
+  <form class="add-form" *ngIf="formInput" [formGroup]="formInput" (ngSubmit)="onSubmit(formInput)">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Име на Кошер</mat-label>
+      <input formControlName="name" matInput required />
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Ред</mat-label>
+      <input formControlName="line" matInput required type="number" />
+      <mat-error>Моля въвдете само числа</mat-error>
+    </mat-form-field>
+    <div class="notification is-danger" *ngIf="hasError">{{errorMsg}}</div>
 
-      <button [disabled]="formInput.invalid" mat-raised-button type="submit">
-        Добави
-      </button>
-      <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">Зареждане...</span>
-    </form>
+    <button [disabled]="formInput.invalid" mat-raised-button type="submit">
+      Добави
+    </button>
+    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">Зареждане...</span>
+  </form>
 </div>

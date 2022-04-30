@@ -25,4 +25,8 @@ export class BeeGardenService {
   getRecentBeeGardens(): Observable<IBeeGarden[]> {
     return this._httpService.get('beegardens/recent');
   }
+
+  deleteBeeGarden(id: string): Observable<any> {
+    return this._httpService.delete('beegardens/' + id);
+  }
 }

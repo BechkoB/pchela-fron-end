@@ -20,6 +20,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import {
   MatMomentDateModule,
   MAT_MOMENT_DATE_ADAPTER_OPTIONS
@@ -48,7 +49,8 @@ const MaterialComponent = [
   MatListModule,
   MatMenuModule,
   MatTabsModule,
-  MatMomentDateModule
+  MatMomentDateModule,
+  MatTooltipModule
 ];
 
 @NgModule({
@@ -59,4 +61,4 @@ const MaterialComponent = [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ]
 })
-export class MaterialModule {}
+export class MaterialModule { }

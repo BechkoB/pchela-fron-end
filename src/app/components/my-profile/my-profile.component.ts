@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { IBeeGarden, IUser } from 'src/app/interfaces/interfaces';
+import { BeeGardenService } from 'src/app/services/beegarden.service';
+import { DialogService } from 'src/app/services/dialog.service';
 import { HttpService } from 'src/app/services/http.service';
 
 @Component({
@@ -18,18 +20,28 @@ export class MyProfileComponent implements OnInit {
   profileForm: FormGroup;
   beeGarden: IBeeGarden;
 
-  constructor(private httpService: HttpService) { }
+  constructor(
+    private _httpService: HttpService,
+    private _dialogService: DialogService,
+    private _beeGardenService: BeeGardenService) { }
 
   ngOnInit(): void {
-    this.fetchUser();
+    this.fetchData();
   }
 
-  fetchUser() {
+  fetchData() {
     const userData = JSON.parse(localStorage.getItem('userData') as string);
-    this.httpService.get(`user/${userData.userId}`).pipe(take(1)).subscribe((res: any) => {
+    this._httpService.get(`user/${userData.userId}`).pipe(take(1)).subscribe((res: any) => {
       this.currentUser = res.user;
       this.initForm();
+      this.fetchGardenByOwnerId(this.currentUser._id);
     });
+  }
+
+  fetchGardenByOwnerId(ownerId: string): void {
+    this._httpService.get(`beegardens/owner/${ownerId}`).pipe(take(1)).subscribe((res: any) => {
+      this.beeGarden = res?.garden;
+    })
   }
 
   initForm(): void {
@@ -44,13 +56,34 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
-  enableEditMode(user: IUser): void {
+  enableEditMode(): void {
     this.isInEditMode = true;
     this.profileForm.enable();
   }
 
   onEditUser(): void {
+    const userData = JSON.parse(localStorage.getItem('userData') as string);
 
+    const body = {
+      email: this.profileForm.get('email')?.value,
+      firstName: this.profileForm.get('firstName')?.value,
+      secondName: this.profileForm.get('secondName')?.value,
+      phone: this.profileForm.get('phone')?.value
+    }
+    console.log(this.profileForm.get('email')?.value);
+    console.log(this.profileForm.get('firstName')?.value);
+    console.log(this.profileForm.get('secondName')?.value);
+    console.log(this.profileForm.get('phone')?.value);
+    console.log(userData.userId);
+
+    this._httpService.patch(`user/edit/${userData.userId}`, body)
+      .pipe(take(1))
+      .subscribe((res: any) => {
+        console.log(res);
+        this.currentUser = res;
+        this.isInEditMode = false;
+        this.profileForm.disable()
+      });
   }
 
   onCancel(): void {
@@ -58,4 +91,27 @@ export class MyProfileComponent implements OnInit {
     this.profileForm.disable()
   }
 
+  onDelete(event: Event, id: string) {
+    event.stopPropagation();
+    event.preventDefault();
+
+    this._dialogService
+      .openConfirmDialog()
+      .afterClosed()
+      .subscribe((response) => {
+        if (!response) {
+          return;
+        }
+        this.deleteBeeGarden(id);
+      });
+  }
+
+  deleteBeeGarden(id: string): void {
+    this._beeGardenService.deleteBeeGarden(id)
+      .pipe(take(1))
+      .subscribe(() => {
+        this.fetchData();
+        this.isInEditMode = false;
+      })
+  }
 }

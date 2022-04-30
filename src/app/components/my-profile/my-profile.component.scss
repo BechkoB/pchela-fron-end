@@ -9,7 +9,6 @@
   margin-bottom: 10%;
   margin-top: 5%;
 
-
   .profile-logo {
     display: flex;
     justify-content: center;
@@ -28,6 +27,7 @@
     -moz-box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 4px 25px 11px rgba(0, 0, 0, 0.8);
     padding: 40px 60px;
+    min-height: 520px;
   }
 
   .field {
@@ -74,18 +74,24 @@
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 24px;
   color: white;
-
-  a {
+  position: absolute;
+  left: 63rem;
+  top: 13rem;
+    a {
+    font-size: 26px;
     font-style: italic;
-    color:rgb(160, 161, 48);
-    // text-decoration: underline;
+    color:rgb(200, 202, 61);
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
 .profile-form {
   width: 400px;
+  position: absolute;
+  left: 29rem;
 }
 
 .profile-card {
@@ -93,6 +99,21 @@ h2 {
   justify-content:space-around;
 }
 
-img {
-  max-height: 350px;
+section {
+  img {
+  max-height: 300px;
+  position: absolute;
+  right: 29rem;
+  top: 17rem;
+  }
+}
+
+.delete-garden {
+  position: relative;
+  right: -0.5rem;
+  top: -0.4rem;
+  background: transparent;
+  cursor: pointer;
+  z-index: 2;
+  border: none;
 }

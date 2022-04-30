@@ -5,6 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { RandomColorPipe } from './pipes/random-color.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,6 +50,7 @@ import { HivesDataReportComponent } from './components/hives-data/hives-data-rep
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatTooltipModule
   ],
   providers: [{ provide: HivesDataComponent }, { provide: BeehivesComponent }],
   entryComponents: [ConfirmDialogComponent],

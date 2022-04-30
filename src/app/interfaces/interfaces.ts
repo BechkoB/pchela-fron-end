@@ -22,7 +22,7 @@ export interface IUser {
   phone: string;
   token: string;
   tokenExpiresIn: number;
-  userid?: string;
+  userId?: string;
   createdAt: string;
   updatedAt: string;
 }

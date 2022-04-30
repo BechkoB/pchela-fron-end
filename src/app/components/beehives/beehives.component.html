@@ -30,7 +30,7 @@
       <mat-card class="hive-card" (click)="onClick(hive._id)">
 
           <button *ngIf="showBtn" mat-flat-button class="delete-hive" (click)="onDelete($event, hive._id)">
-            <mat-icon>delete_forever</mat-icon>
+            <mat-icon [matTooltip]="'Изтрий'" [matTooltipPosition]="'above'">delete_forever</mat-icon>
           </button>
           <mat-card-title-group>
             <mat-card-subtitle >{{ hive?.name }} - ред {{hive?.line}} </mat-card-subtitle>

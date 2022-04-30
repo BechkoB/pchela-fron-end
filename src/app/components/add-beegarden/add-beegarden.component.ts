@@ -40,7 +40,9 @@ export class AddBeegardenComponent implements OnInit {
 
     if (isNaN(lat) || isNaN(lng)) {
       this.loading = false;
-      throw new Error('Моля, въведете само цифри за координатите');
+      this.hasError = true;
+      this.errorMsg = 'Моля, въведете само цифри за координатите';
+      return;
     }
     console.log(this.userData);
     this._beeGardenService

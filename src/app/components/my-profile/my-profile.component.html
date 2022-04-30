@@ -1,97 +1,81 @@
-
-  <div class="profile-box">
-    <mat-card-content>
-      <form [formGroup]="profileForm" *ngIf="profileForm">
-        <div class="profile-card">
-          <div class="profile-form">
-            <div class="profile-logo">
-              <img src="../../../assets/img/user-icon.png" alt="" />
-            </div>
-            <mat-form-field appearance="outline">
+<div class="profile-box">
+  <mat-card-content>
+    <form [formGroup]="profileForm" *ngIf="profileForm">
+      <div class="profile-card">
+        <div class="profile-form">
+          <div class="profile-logo">
+            <img src="../../../assets/img/user-icon.png" alt="" />
+          </div>
+          <mat-form-field appearance="outline">
             <span matPrefix class="icon is-medium is-left">
               <i class="fas fa-user"></i>
             </span>
-            <input
-              matInput
-              placeholder="Име"
-              formControlName="firstName"
-              required
-              minlength="3"
-            />
+            <input matInput placeholder="Име" formControlName="firstName" required minlength="3" />
             <mat-error>
               Mин 3 символа!
             </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
             <span matPrefix class="icon is-medium is-left">
               <i class="fas fa-user"></i>
             </span>
-            <input
-              matInput
-              placeholder="Фамилия"
-              formControlName="secondName"
-              required
-              minlength="3"
-            />
+            <input matInput placeholder="Фамилия" formControlName="secondName" required minlength="3" />
             <mat-error>
               Mин 3 символа!
             </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
             <span matPrefix class="icon is-medium is-left">
               <i class="fas fa-at"></i>
             </span>
-            <input
-              matInput
-              placeholder="Имейл"
-              formControlName="email"
-              required
-              minlength="3"
-              email
-            />
+            <input matInput placeholder="Имейл" formControlName="email" required minlength="3" email />
             <mat-error> Моля въвдете валиден имейл!</mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
             <span matPrefix class="icon is-medium is-left">
               <i class="fas fa-phone"></i>
             </span>
-            <input
-              matInput
-              placeholder="Телефон"
-              formControlName="phone"
-              required
-              minlength="10"
-            />
+            <input matInput placeholder="Телефон" formControlName="phone" required minlength="10" number />
             <mat-error>
               Моля въвдете валиден телефонен номер, мин 10 цифри!
             </mat-error>
-            </mat-form-field>
-            <div class="notification is-danger" *ngIf="hasError">{{errorMsg}}</div>
-            <div class="field" *ngIf="!isInEditMode">
-              <p class="control">
-                <button *ngIf="!loading" type="click" class="login-btn button is-success" (click)="enableEditMode(currentUser)">Редактирай</button>
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">Зареждане...</span>
-              </p>
-            </div>
-            <div class="edit-btns" *ngIf="isInEditMode">
-              <p class="control">
-                <button *ngIf="!loading" type="submit" [disabled]="!profileForm.valid" class="login-btn button is-success" (click)="onEditUser()">Запази</button>
-                <button *ngIf="!loading" type="submit" class="login-btn button is-success" (click)="onCancel()">Назад</button>
-                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">Зареждане...</span>
-              </p>
-            </div>
+          </mat-form-field>
+          <div class="notification is-danger" *ngIf="hasError">{{errorMsg}}</div>
+          <div class="field" *ngIf="!isInEditMode">
+            <p class="control">
+              <button *ngIf="!loading" type="click" class="login-btn button is-success"
+                (click)="enableEditMode()">Редактирай</button>
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">Зареждане...</span>
+            </p>
           </div>
-          <div class="garden-card">
-            <h2>Моята Пчелина : <a routerLink="/">Име</a></h2>
-            <section>
-              <img src="../../../assets/img/home2.jpg" alt="">
-            </section>
+          <div class="edit-btns" *ngIf="isInEditMode">
+            <p class="control">
+              <button *ngIf="!loading" type="submit" [disabled]="!profileForm.dirty || !profileForm.valid"
+                class="login-btn button is-success" (click)="onEditUser()">Запази</button>
+              <button *ngIf="!loading" type="submit" class="login-btn button is-success"
+                (click)="onCancel()">Назад</button>
+              <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">Зареждане...</span>
+            </p>
           </div>
         </div>
-      </form>
-    </mat-card-content>
-  </div>
-
-
-
-
+        <div class="garden-card">
+          <div>
+            <h2 *ngIf="this.beeGarden">Моята Пчелина : <a routerLink="/beegardens/{{beeGarden._id}}">{{
+                this.beeGarden?.name }}</a>
+              <button *ngIf="isInEditMode" matSuffix mat-icon-button class="delete-garden"
+                (click)="onDelete($event, beeGarden._id)">
+                <mat-icon [matTooltip]="'Изтрий'" [matTooltipPosition]="'above'">delete_forever</mat-icon>
+              </button>
+            </h2>
+            <h2 *ngIf="!this.beeGarden">
+              <a style="cursor: default;">Нямате регистриранa Пчелина</a>
+            </h2>
+          </div>
+          <section>
+            <img src="../../../assets/img/home2.jpg" alt="">
+          </section>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</div>

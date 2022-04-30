@@ -8,27 +8,14 @@
         <span matPrefix class="icon is-medium is-left">
           <i class="fas fa-at"></i>
         </span>
-        <input
-          matInput
-          placeholder="Имейл"
-          formControlName="email"
-          required
-          minlength="3"
-          email
-        />
+        <input matInput placeholder="Имейл" formControlName="email" required minlength="3" email />
         <mat-error> Моля въвдете валиден имейл!</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <span matPrefix class="icon is-medium is-left">
           <i class="fas fa-lock"></i>
         </span>
-        <input
-          matInput
-          type="password"
-          placeholder="Парола"
-          formControlName="password"
-          required
-        />
+        <input matInput type="password" placeholder="Парола" formControlName="password" />
       </mat-form-field>
       <div class="notification is-danger" *ngIf="hasError">{{errorMsg}}</div>
       <div class="options">
@@ -38,17 +25,10 @@
       </div>
       <div class="field">
         <p class="control">
-          <button
-            *ngIf="!loading"
-            type="submit"
-            [disabled]="!loginForm.valid"
-            class="login-btn button is-success"
-          >
+          <button *ngIf="!loading" type="submit" [disabled]="!loginForm.valid" class="login-btn button is-success">
             Вход
           </button>
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"
-            >Зареждане...</span
-          >
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1">Зареждане...</span>
         </p>
       </div>
     </form>
